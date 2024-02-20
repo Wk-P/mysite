@@ -1,0 +1,3 @@
+1.app和界面解耦，把urls引用放在根目录下
+2.不涉及数据库的界面views处理逻辑单独放在根目录下的views文件夹中
+3.static和templates直接放在根目录下
