@@ -22,4 +22,4 @@ setInterval(() => {
     url = `../static/img/${images[currentIndex]}`
     document.body.style.backgroundImage = `url("${url}")`;
     currentIndex = Math.floor(Math.random() * images.length); // 循环切换图片
-}, 3000); // 每隔3秒切换一次背景图片
+}, 5000); // 每隔3秒切换一次背景图片

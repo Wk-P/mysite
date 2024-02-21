@@ -13,7 +13,7 @@ body {
     height: 100vh;
     margin: 0;
     position: relative;
-    transition: background-image 1s ease;
+    transition: background-image 2s ease;
 }
 
 .overlay {

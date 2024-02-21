@@ -8,7 +8,7 @@ body {
     background-position: center;
     background-attachment: fixed; /* 背景图像固定在视口中 */
     height: 100vh; /* 设置 body 高度为视口的高度 */
-    transition: background-image 1s ease; /* 添加背景图像切换的过渡效果 */
+    transition: background-image 2s ease; /* 添加背景图像切换的过渡效果 */
 }
 
 
@@ -22,7 +22,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     opacity: 0; /* 初始时完全透明 */
-    transition: opacity 1s ease; /* 添加过渡效果，持续时间为 2 秒，速度曲线为 ease */
+    transition: opacity 1s ease-in-out; /* 添加过渡效果，持续时间为 2 秒，速度曲线为 ease */
 }
 
 #bangumi-list.show {
