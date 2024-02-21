@@ -10,6 +10,8 @@ class Spider(View):
     
     def post(self, request):
         data = spider_get()
-
-        return JsonResponse({"response": data})
+        if data == []:
+            return JsonResponse({"response": "null"})
+        else:
+            return JsonResponse({"response": data})
 

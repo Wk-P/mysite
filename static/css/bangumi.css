@@ -45,6 +45,7 @@ body {
     color: rgb(88, 52, 18);
     margin-right: 5px;
     font-weight: bold;
+    user-select: none; /* 禁止用户选择文本 */
 }
 
 /* 定义链接的样式 */
@@ -53,6 +54,7 @@ body {
     /* 修改链接文字颜色为蓝色 */
     text-decoration: none;
     /* 去除链接的下划线 */
+    user-select: none; /* 禁止用户选择文本 */
 }
 
 /* 鼠标悬停时链接的样式 */

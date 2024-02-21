@@ -25,10 +25,11 @@ def spider_get():
     data_list = list()
 
     while counter <= total:
-        response = requests.get(url=url, cookies=jar, headers=headers)
-
-        data = json.loads(response.text)['data']
-        
+        try:
+            response = requests.get(url=url, cookies=jar, headers=headers)
+            data = json.loads(response.text)['data']
+        except:
+            return []
         # 第一次
         if total == 0:
             total = data['total']
