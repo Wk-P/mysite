@@ -3,9 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link id="icon" rel="shortcut icon" href="https://fastcdn.mihoyo.com/static-resource-v2/2023/12/26/94c1ab74da48fb7286f0ea5b6a315699_8857161111806566463.png">
+    <script src="../static/js/register.js"></script>
     <title>注册</title>
 </head>
 <body>
+    {% csrf_token %}
     <p>用户注册</p>
+    <div>
+        用户名
+        <label><input type="text" id="username"/></label>
+    </div>
+    <div>
+        密码
+        <label><input type="password" id="password"/></label>
+    </div>
+    <div>
+        确认密码
+        <label><input type="password" id="password1"/></label>
+    </div>
+    <div>
+        <button id="loginButton">注册</button>
+        <button id="cancelButton">取消</button>
+    </div>
 </body>
+<script src="../static/js/utils.js"></script>
 </html>
