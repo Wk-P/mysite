@@ -13,7 +13,7 @@ function registerButtonClick() {
         return false;
     }
 
-    fetch('/register', {
+    fetch('/delete', {
         method: "POST",
         headers: {
             'X-CSRFToken': getCookie('csrftoken'),
@@ -26,9 +26,10 @@ function registerButtonClick() {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            if (data['success'] === true) { alert("注册成功"); }
+            if (data['success'] === true) { alert("删除成功"); }
             else {
-                if (data['msg'] === 1) { alert("注册失败，用户已存在"); }
+                if (data['msg'] === 1) { alert("删除失败，用户已不存在"); }
+                else if (data['msg'] === 3) { alert('删除失败'); window.location.href = "/"; }
                 else { alert("未知错误"); }
             }
         })
@@ -42,12 +43,15 @@ function cancelButtonClick() {
     window.location.href = "/";
 }
 
-
 window.onload = () => {
+    // 定义背景图片列表
     backgroundImageChange();
-    var registerButton = document.getElementById('registerButton');
-    var cancelButton = document.getElementById('cancelButton');
 
-    registerButton.onclick = registerButtonClick;
+    let deleteButton = document.getElementById('deleteButton');
+    let cancelButton = document.getElementById('cancelButton'); 
+
+    deleteButton.onclick = registerButtonClick;
     cancelButton.onclick = cancelButtonClick;
+    
 }
+

@@ -8,7 +8,7 @@ body {
     background-position: center;
     background-attachment: fixed; /* 背景图像固定在视口中 */
     height: 100vh; /* 设置 body 高度为视口的高度 */
-    transition: background-image 2s ease; /* 添加背景图像切换的过渡效果 */
+    transition: background-image 2s ease-in-out; /* 添加背景图像切换的过渡效果 */
 }
 
 

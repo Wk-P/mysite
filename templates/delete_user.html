@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,29 +15,35 @@
     <link rel="preload" href="../static/img/千年之羽.jpg" as="image">
     <link rel="preload" href="../static/img/六周年.jpg" as="image">
     <link rel="preload" href="../static/img/卡萝尔.jpg" as="image">
-    <link id="icon" rel="shortcut icon" href="https://fastcdn.mihoyo.com/static-resource-v2/2023/12/26/94c1ab74da48fb7286f0ea5b6a315699_8857161111806566463.png">
+    <link id="icon" rel="shortcut icon"
+        href="https://fastcdn.mihoyo.com/static-resource-v2/2023/12/26/94c1ab74da48fb7286f0ea5b6a315699_8857161111806566463.png">
+    <link rel="stylesheet" href="../static/css/delete_user.css">
     <script src="../static/js/utils.js"></script>
-    <script src="../static/js/register.js"></script>
-    <title>注册</title>
+    <script src="../static/js/delete_user.js"></script>
+    <title>注销</title>
 </head>
+
 <body>
     {% csrf_token %}
-    <p>用户注册</p>
-    <div>
-        用户名
-        <label><input type="text" id="username"/></label>
-    </div>
-    <div>
-        密码
-        <label><input type="password" id="password"/></label>
-    </div>
-    <div>
-        确认密码
-        <label><input type="password" id="password1"/></label>
-    </div>
-    <div class="buttonContainer">
-        <button id="registerButton">注册</button>
-        <button id="cancelButton">取消</button>
+    <div class="outer">
+        <p>用户注销</p>
+        <div>
+            <span>用户名</span>
+            <label><input type="text" id="username" /></label>
+        </div>
+        <div>
+            <span>密码</span>
+            <label><input type="password" id="password" /></label>
+        </div>
+        <div>
+            <span>确认密码</span>
+            <label><input type="password" id="password1" /></label>
+        </div>
+        <div class="buttonContainer">
+            <button id="deleteButton">删除</button>
+            <button id="cancelButton">取消</button>
+        </div>
     </div>
 </body>
+
 </html>
