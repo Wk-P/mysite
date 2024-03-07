@@ -26,13 +26,13 @@ function registerButtonClick() {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            if (data['success'] === true) { 
-                alert("删除成功"); 
-                window.location.href = "/"; 
+            if (data['success'] === true) {
+                alert("删除成功");
+                window.location.assign('/');
             }
             else {
-                if (data['msg'] === 1) { alert("删除失败，用户已不存在"); window.location.href = "/"; }
-                else if (data['msg'] === 3) { alert('删除失败'); window.location.href = "/"; }
+                if (data['msg'] === 1) { alert("删除失败，用户已不存在"); window.location.assign('/'); }
+                else if (data['msg'] === 3) { alert('删除失败'); window.location.assign('/'); }
                 else { alert("未知错误"); }
             }
         })
@@ -47,14 +47,18 @@ function cancelButtonClick() {
 }
 
 window.onload = () => {
+    let tabId = pageAdd();
     // 定义背景图片列表
     backgroundImageChange();
-
+    
+    
     let deleteButton = document.getElementById('deleteButton');
-    let cancelButton = document.getElementById('cancelButton'); 
+    let cancelButton = document.getElementById('cancelButton');
 
     deleteButton.onclick = registerButtonClick;
     cancelButton.onclick = cancelButtonClick;
-    
+    if (pageList.length < 1) {
+        autoLogout(tabId);
+    }
 }
 

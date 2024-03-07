@@ -2,7 +2,6 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url("../img/六周年.jpg");
     overflow-y: auto; /* 仅在垂直方向上允许滚动 */
     background-size: cover; /* 尽可能地覆盖整个页面 */
     background-position: center;
@@ -11,9 +10,9 @@ body {
     transition: background-image 2s ease-in-out; /* 添加背景图像切换的过渡效果 */
 }
 
-
 /* 定义番剧列表容器样式 */
 #bangumi-list {
+    position: relative;
     width: 85%;
     max-width: 800px;
     margin: 20px auto;
@@ -23,11 +22,12 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     opacity: 0; /* 初始时完全透明 */
     transition: opacity 1s ease-in-out; /* 添加过渡效果，持续时间为 2 秒，速度曲线为 ease */
+    z-index: 0;
 }
 
 #bangumi-list.show {
+    opacity: 1;
     background-color: rgba(255, 255, 255, 0.9); /* 渐变到完全不透明的背景 */
-    opacity: 1; /* 渐变到完全不透明 */
 }
 
 /* 定义番剧列表项样式 */
@@ -50,17 +50,36 @@ body {
 
 /* 定义链接的样式 */
 .bangumi-link {
+    width: 100%;
     color: #007bff;
-    /* 修改链接文字颜色为蓝色 */
     text-decoration: none;
-    /* 去除链接的下划线 */
     user-select: none; /* 禁止用户选择文本 */
+    transition: font-size 200ms;
+}
+
+.bangumi-link:hover {
+    color: rgb(212, 187, 41);
+    font-size: larger;
+    transition: font-size 500ms;
+}
+
+.bangumi-image {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    margin: 10px;
+    width:200px;
+    transition: opacity 500ms ease-in-out;
 }
 
 /* 鼠标悬停时链接的样式 */
-.bangumi-link:hover {
-    color: #0056b3;
-    /* 修改链接文字颜色为深蓝色 */
+.bangumi-link:hover + .bangumi-image {
+    opacity: 1;
+    width: 200px;
+    margin: 10px;
+    z-index: 1;
+    font-size: 200px;
+    transition: opacity 500ms ease-in-out;
 }
 
 /* 隐藏滚动条 */

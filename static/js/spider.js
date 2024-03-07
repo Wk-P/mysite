@@ -1,16 +1,25 @@
+
+// 记录页面Id
+let tabId;
+
 window.onload = () => {
+    tabId = pageAdd();
+    // 背景图片生成
     backgroundImageChange();
     fetch("/bangumi", {
         method: "POST",
         headers: {
             'X-CSRFToken': getCookie('csrftoken'),
         },
+        body: JSON.stringify({
+            request_class: "spider"
+        })
     })
         .then(response => response.json())
         .then(data => {
-
+            console.log(data)
             data = data.response;
-            
+
             if (data != "null") {
                 const bangumiList = document.getElementById('bangumi-list');
                 for (const [index, d] of data.entries()) {
@@ -31,6 +40,13 @@ window.onload = () => {
                     a.target = "_blank";
                     div.appendChild(a);
 
+                    // 添加缩略图
+                    var image = document.createElement("img");
+                    image.src = d.cover;
+                    image.className = "bangumi-image";
+                    image.alt = 'img';
+                    div.appendChild(image);
+
                     bangumiList.appendChild(div);
 
                     // 添加 .show 类以触发渐入效果
@@ -46,3 +62,13 @@ window.onload = () => {
         })
         .catch(error => console.log(error));
 }
+
+window.addEventListener('unload', function() {
+    // 从列表中删除界面
+    pageDel(tabId);
+
+    // 若是最后一个界面，则退出用户登录状态
+    if (pageList.length < 1) {
+        autoLogout();
+    }
+})

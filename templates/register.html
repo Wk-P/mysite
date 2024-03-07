@@ -26,21 +26,22 @@
 <body>
     <div class="contents">
         {% csrf_token %}
-        <p>用户注册</p>
-        <div>
-            <span>用户名</span>
-            <label><input type="text" id="username" /></label>
+        <div class="title">用户注册</div>
+        <div class="textInput">
+            <div>用户名</div>
+            <div><label><input type="text" id="username" /></label></div>
         </div>
-        <div>
-            <span>密码</span>
-            <label><input type="password" id="password" /></label>
+        <div class="textInput">
+            <div>密码</div>
+            <div><label><input type="password" id="password" /></label></div>
         </div>
-        <div>
-            <span>确认密码</span>
-            <label><input type="password" id="password1" /></label>
+        <div class="textInput">
+            <div>确认密码</div>
+            <div><label><input type="password" id="password1" /></label></div>
         </div>
         <div class="buttonContainer">
             <button id="registerButton">注册</button>
+            <button id="loginButton">登录</button>
             <button id="cancelButton">取消</button>
         </div>
     </div>

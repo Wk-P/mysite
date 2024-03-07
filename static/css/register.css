@@ -16,11 +16,21 @@ body {
 }
 
 button {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
     margin-top: 10px;
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-family: "Microsoft YaHei", "微软雅黑", "SimHei", "黑体", "PingFang SC", "苹方", Arial, sans-serif;
     color:rgb(209, 110, 39);
     font-weight: 850;
     font-size: 1.5ch;
+}
+
+button:hover {
+    cursor: pointer;
+    color: rgb(84, 6, 87);
+    background-color: var(--inverted-background-color);
+    transition: all 0.2s;
 }
 
 input {
@@ -44,7 +54,19 @@ input:focus {
 }
 
 .contents {
-    background-color: rgba(255, 255, 255, 0.75); /* 使用 rgba 表示颜色，并设置透明度为 0.5 */
+    background-color: rgba(255, 255, 255, 0.85); /* 使用 rgba 表示颜色，并设置透明度为 0.5 */
     padding: 20px; /* 增加一些内边距 */
     border-radius: 10px; /* 圆角边框 */
+}
+
+.textInput {
+    display: flex;
+    flex-direction: row;
+}
+
+.textInput div:first-child {
+    width: 20%;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
 }

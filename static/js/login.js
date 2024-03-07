@@ -22,7 +22,7 @@ function loginButtonClick() {
         .then(data => {
             if (data['success'] === true) {
                 alert("登录成功");
-                window.location.href = "/";
+                window.location.assign('/');
             } else {
                 if (data['msg'] == 1) { alert("用户名或密码错误"); }
                 else if (data['msg'] == 2) { alert("用户不存在"); }
@@ -32,20 +32,26 @@ function loginButtonClick() {
         .catch(error => {
             alert("未知错误")
         })
-
+    
+    
 }
 
 function cancelButtonClick() {
     // TODO
-    window.location.href = "/";
+    window.location.assign("/");
 }
 
+function registerButtonClick() {
+    window.location.assign("/register");
+}
 
 window.onload = () => {
     backgroundImageChange();
     var loginButton = document.getElementById('loginButton');
     var cancelButton = document.getElementById('cancelButton');
+    var registerButton = document.getElementById('registerButton');
 
     loginButton.onclick = loginButtonClick;
     cancelButton.onclick = cancelButtonClick;
+    registerButton.onclick = registerButtonClick;
 }
