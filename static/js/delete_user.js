@@ -26,9 +26,12 @@ function registerButtonClick() {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            if (data['success'] === true) { alert("删除成功"); }
+            if (data['success'] === true) { 
+                alert("删除成功"); 
+                window.location.href = "/"; 
+            }
             else {
-                if (data['msg'] === 1) { alert("删除失败，用户已不存在"); }
+                if (data['msg'] === 1) { alert("删除失败，用户已不存在"); window.location.href = "/"; }
                 else if (data['msg'] === 3) { alert('删除失败'); window.location.href = "/"; }
                 else { alert("未知错误"); }
             }

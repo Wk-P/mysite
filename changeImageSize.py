@@ -9,7 +9,7 @@ output_folder = "./static/img/"
 
 # 目标尺寸
 target_width = 1912
-target_height = int(1912 * (1080 / 1920))
+target_height = int(1912 * (9 / 16))
 
 # 遍历文件夹中的所有文件
 for filename in os.listdir(input_folder):

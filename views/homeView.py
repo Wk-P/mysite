@@ -3,4 +3,7 @@ from django.views import View
 
 class home(View):
     def get(self, request):
-        return render(request=request, template_name='home.html')
+        if request.session.get('user_id'):
+            return render(request=request, template_name='home.html')
+        else:
+            return render(request=request, template_name="login.html")

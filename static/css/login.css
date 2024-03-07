@@ -33,6 +33,10 @@ input {
     font-size: 20px;
 }
 
+.title {
+    text-align: center;
+}
+
 input:focus {
     outline: none;
 }
@@ -41,4 +45,22 @@ input:focus {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+
+.contents {
+    background-color: rgba(255, 255, 255, 0.75); /* 使用 rgba 表示颜色，并设置透明度为 0.5 */
+    padding: 20px; /* 增加一些内边距 */
+    border-radius: 10px; /* 圆角边框 */
+}
+
+.textInput {
+    display: flex;
+    flex-direction: row;
+}
+
+.textInput div:first-child {
+    width: 20%;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
 }
