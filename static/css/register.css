@@ -1,6 +1,5 @@
 body {
     background-size: cover;
-    background-image: url("../img/阿波尼亚.jpg");
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
@@ -12,14 +11,14 @@ body {
     height: 100vh; /* This ensures the body covers the entire viewport height */
     margin: 0; /* Remove default margin */
     padding: 0; /* Remove default padding */
-    color:rgb(235, 136, 66);
+    color:rgb(238, 136, 19);
     font-weight: 900;
 }
 
 button {
     margin-top: 10px;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    color:rgb(235, 136, 66);
+    color:rgb(209, 110, 39);
     font-weight: 850;
     font-size: 1.5ch;
 }
@@ -42,4 +41,10 @@ input:focus {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+
+.contents {
+    background-color: rgba(255, 255, 255, 0.75); /* 使用 rgba 表示颜色，并设置透明度为 0.5 */
+    padding: 20px; /* 增加一些内边距 */
+    border-radius: 10px; /* 圆角边框 */
 }

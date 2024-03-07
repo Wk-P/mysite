@@ -94,7 +94,7 @@ class DeleteUserView(View):
             else:
                 return JsonResponse({"success": False, "msg": 2})
             
-
+ 
 class SearchUserView(View):
     def get(self, request):
         return render(request=request, template_name="search_user.html")
@@ -110,4 +110,11 @@ class SearchUserView(View):
             # msg: 1  没找到
             return JsonResponse({"success": False, "msg": 1})
 
+
+class UserCenterView(View):
+    def get(self, request):
+        return render(request=request, template_name='usercenter.html')
+    
+    def post(self, request):
+        body = get_body(request=request)
         
