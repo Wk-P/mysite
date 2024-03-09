@@ -27,5 +27,7 @@ window.addEventListener('unload', function() {
     // 若是最后一个界面，则退出用户登录状态
     if (pageList.length < 1) {
         autoLogout();
+        // 必须把pageList设为空
+        localStorage.removeItem('pageList');
     }
 })

@@ -100,9 +100,6 @@ function autoLogout() {
         .then(data => {
             window.location.assign("/");
         })
-    
-    // 必须把pageList设为空
-    localStorage.removeItem('pageList');
 }
 
 function pageAdd() {

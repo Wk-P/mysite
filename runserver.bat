@@ -1,0 +1,1 @@
+cmd /k "cd C:\github\mysite && py manage.py runserver 80"
