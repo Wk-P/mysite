@@ -46,8 +46,10 @@ function cancelButtonClick() {
     window.location.href = "/";
 }
 
+let tabId;
+
 window.onload = () => {
-    let tabId = pageAdd();
+    tabId = pageAdd();
     // 定义背景图片列表
     backgroundImageChange();
     
@@ -57,8 +59,16 @@ window.onload = () => {
 
     deleteButton.onclick = registerButtonClick;
     cancelButton.onclick = cancelButtonClick;
-    if (pageList.length < 1) {
-        autoLogout(tabId);
-    }
 }
 
+window.addEventListener('unload', function() {
+    // 从列表中删除界面
+    pageDel(tabId);
+
+    // 若是最后一个界面，则退出用户登录状态
+    if (pageList.length < 1) {
+        autoLogout();
+        // 必须把pageList设为空
+        localStorage.removeItem('pageList');
+    }
+})

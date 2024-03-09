@@ -49,7 +49,7 @@ class RegisterView(View):
         else:
             user = User(username=username, password=hash_password)
             user.save()
-            return JsonResponse({"success": True, "msg":0, "data":{"username": username, "password": password}})
+            return JsonResponse({"success": True, "msg":0})
 
 
 class LoginView(View):

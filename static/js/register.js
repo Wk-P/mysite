@@ -26,17 +26,13 @@ function registerButtonClick() {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            if (data['success'] === true) {
-                var alertDiv = document.getElementById("alert");
-                alertDiv.style.display = "block";
-                setTimeout(function () {
-                    alertDiv.style.display = "none";
-                }, 3000);
+            if (data.success === true) {
+                alert("注册成功");
                 window.location.href = "./usercenter";
             }
             else {
                 if (data['msg'] === 1) { alert("注册失败，用户已存在"); }
-                else { alert("未知错误"); }
+                else { alert("注册失败，未知错误"); }
             }
         })
         .catch(error => {
