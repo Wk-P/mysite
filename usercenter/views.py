@@ -41,6 +41,7 @@ def findUser(username):
 
 class RegisterView(View):
     def get(self, request):
+        print(request.path)
         return render(request=request, template_name="register.html")
     
     def post(self, request):
@@ -55,10 +56,12 @@ class RegisterView(View):
         if user.exists():
             return JsonResponse({"success": False, "msg": 1})
         else:
-            user = User(username=username, password=hash_password)
-            user.save()
-            return JsonResponse({"success": True, "msg":0})
-
+            if request.COOKIES.get('user_id'):
+                user = User(username=username, password=hash_password)
+                user.save()
+                return JsonResponse({"success": True, "msg": 0})
+            else:
+                return JsonResponse({"success": False, "msg": 2})
 
 class LoginView(View):
     def get(self, request):
@@ -128,8 +131,7 @@ class SearchUserView(View):
 
 class UserCenterView(View):
     def get(self, request):
-        print(request.COOKIES.get("user_id"))
-        if request.session['user_name']:
+        if request.COOKIES.get('user_id'):
             return render(request=request, template_name='usercenter.html')
         else:
             return render(request=request, template_name="login.html")
@@ -137,17 +139,20 @@ class UserCenterView(View):
     def post(self, request):
         body = get_body(request=request)
         request_class_string = body.get('request_class')
-        if request_class_string == 'logout':
-            # 清理session
-            request.session.flush()
+        if request.COOKIES.get('user_id'):
+            if request_class_string == 'logout':
+                # 清理session
+                request.session.flush()
 
-            # 清理cookies
-            response = HttpResponse("Logout successful")
-            response.delete_cookie("user_id")
-            return response
+                # 清理cookies
+                response = HttpResponse("Logout successful")
+                response.delete_cookie("user_id")
+                return response
+            else:
+                # 未完待续的其他功能
+                return JsonResponse({"success": False, "msg": 1})
         else:
-            # 未完待续的其他功能
-            return JsonResponse({"success": False, "msg": 1})
+            return JsonResponse({"success": False, "msg": 2})
             
 
 

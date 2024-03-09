@@ -4,14 +4,14 @@
     padding: 0;
 }
 
-/* 定义body样式，设置背景图片填充整个屏幕 */
 body {
+    width: 100%;
+    background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     height: 100vh;
     margin: 0;
-    position: relative;
     transition: background-image 2s ease-in-out;
 }
 
@@ -26,20 +26,6 @@ body {
     height: 100%;
     background-color: rgba(255, 255, 255, 0.5);
 }
-
-/* button {
-    margin: 20px;
-    text-decoration: none;
-    color: #333;
-    font-size: 24px;
-    display: inline-block;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer; 
-    user-select: none; 
-    transition: all 0.2s; 
-}*/
 
 
 button:hover {

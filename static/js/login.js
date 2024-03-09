@@ -32,8 +32,8 @@ function loginButtonClick() {
         })
         .then(data => {
             if (typeof data === 'object') {
-                if (data['msg'] === 1) { alert("用户名或密码错误"); }
-                else if (data['msg'] === 2) { alert("用户不存在"); }
+                if (data['msg'] === 1) { alert("用户不存在"); }
+                else if (data['msg'] === 2) { alert("用户名或密码错误"); }
                 else { alert("网页错误"); }
             } else {
 

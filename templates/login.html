@@ -21,21 +21,27 @@
     <title>登录</title>
 </head>
 <body>
+    {% csrf_token %}
     <div class="contents">
-        {% csrf_token %}
-        <div class="title">用户登录</div>
-        <div class="textInput">
-            <div>用户名</div>
-            <div><label><input type="text" id="usernameInput"/></label></div>
-        </div>
-        <div class="textInput">
-            <div>密码</div>
-            <div><label><input type="password" id="passwordInput"/></label></div>
-        </div>
-        <div class="buttonContainer">
-            <button id="loginButton">登录</button>
-            <button id="registerPageButton">注册</button>
-            <button id="cancelButton">取消</button>
+        <div class="contentsCanvas">
+            <div class="title">用户登录</div>
+            <div class="textInput">
+                <div>用户名</div>
+                <div><label><input type="text" title="usernameTextInput" id="usernameInput"/></label></div>
+            </div>
+            <div class="textInput">
+                <div>密码</div>
+                <div><label><input type="password" title="passwordTextInput" id="passwordInput"/></label></div>
+            </div>
+            <div class="textInput">
+                <div>确认密码</div>
+                <div><label><input type="password" title="passwordTextInput1" id="passwordInput1"/></label></div>
+            </div>
+            <div class="buttonContainer">
+                <button id="loginButton">登录</button>
+                <button id="registerPageButton">注册</button>
+                <button id="cancelButton">取消</button>
+            </div>
         </div>
     </div>
 </body>

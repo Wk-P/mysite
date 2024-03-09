@@ -22,18 +22,24 @@ function logout() {
         body: JSON.stringify({
             request_class: "logout",
         })
-    })
+    })  
         .then(response => {
-            if (response.ok) {
-                // 登录成功，根据 HTTP 状态码进行相应的处理
-                const contentType = response.headers.get('content-type');
-                if (contentType && contentType.includes('application/json')) {
-                    alert("未知错误");
-                }
-                else {
-                    alert("用户已退出");
-                    window.location.assign("/");
-                }
+            
+            // 登录成功，根据 HTTP 状态码进行相应的处理
+            const contentType = response.headers.get('content-type');
+            if (contentType && contentType.includes('application/json')) {
+                return response.json();
+            }
+            else {
+                alert("用户已退出");
+                window.location.assign("/");
+            }
+        })
+        .then(data => {
+            if (data['msg'] === 1) {
+                alert("后端错误");
+            } else if (data['msg'] === 2) {
+                alert("用户未登录");
             }
         })
         .catch(error => console.log(error));
