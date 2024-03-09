@@ -1,6 +1,5 @@
 /* Reset some default browser styles */
-body,
-html {
+* {
     margin: 0;
     padding: 0;
 }
@@ -28,7 +27,7 @@ body {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-button {
+/* button {
     margin: 20px;
     text-decoration: none;
     color: #333;
@@ -37,10 +36,10 @@ button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    cursor: pointer; /* 设置光标为透明 */
-    user-select: none; /* 禁止用户选择文本 */
-    transition: all 0.2s;
-}
+    cursor: pointer; 
+    user-select: none; 
+    transition: all 0.2s; 
+}*/
 
 
 button:hover {
@@ -48,3 +47,87 @@ button:hover {
     color: #fff;
 }
 
+.header {
+    font-size: small;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 50px;
+    width: 100%;
+    z-index: 1;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(110, 10, 10, 1));
+}
+
+.function {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style: none;
+    height: 100%;
+}
+
+.function button {
+    color: #fff;
+    margin: 0;
+    border: none;
+    padding: 0px 50px;
+    user-select: none;
+    /* 禁止用户选择文本 */
+    background-color: rgba(0, 0, 0, 0.0);
+    transition: all 0.2s;
+    height: 100%;
+}
+
+.function button:hover {
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+}
+
+.userinfo {
+    height: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.userinfo a {
+    height: 100%;
+}
+
+.userinfo li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.userinfo img {
+    margin: 0px;
+    padding: 0px;
+    height: 50px;
+    transition: transform 0.2s;
+}
+
+
+
+.userinfo a:hover img {
+    transform: scale(1.2, 1.2) translate(0%, 0%);
+    /* 水平和垂直同时放大并向左下平移 */
+}
+
+.userinfo button {
+    color: #333;
+    margin: 0;
+    border: none;
+    padding: 0px 20px;
+    user-select: none;
+    /* 禁止用户选择文本 */
+    transition: all 0.2s;
+    height: 100%;
+}
+
+.userinfo button:hover {
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}

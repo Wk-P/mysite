@@ -1,39 +1,39 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* 定义body样式，设置背景图片填充整个屏幕 */
 body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    height: 100vh;
+    margin: 0;
     position: relative;
     transition: background-image 2s ease-in-out;
-    display: flex;
-    justify-content: center;
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center;
-    height: 100vh; /* This ensures the body covers the entire viewport height */
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
-    color:rgb(238, 136, 19);
-    font-weight: 900;
 }
 
-button {
+.buttonContainer button {
     padding: 10px 25px;
     border: none;
     border-radius: 5px;
     margin-top: 10px;
     font-family: "Microsoft YaHei", "微软雅黑", "SimHei", "黑体", "PingFang SC", "苹方", Arial, sans-serif;
-    color:rgb(209, 110, 39);
+    color:#322;
     font-weight: 850;
     font-size: 1.5ch;
 }
 
-button:hover {
+.buttonContainer button:hover {
     cursor: pointer;
-    color: rgb(84, 6, 87);
+    color: #fdf;
     background-color: var(--inverted-background-color);
     transition: all 0.2s;
 }
 
-input {
+.textInput input {
     margin: 20px;
     border-radius: 10px;
     border-style:initial;
@@ -43,7 +43,7 @@ input {
     font-size: 20px;
 }
 
-input:focus {
+.textInput input:focus {
     outline: none;
 }
 
@@ -54,9 +54,24 @@ input:focus {
 }
 
 .contents {
-    background-color: rgba(255, 255, 255, 0.85); /* 使用 rgba 表示颜色，并设置透明度为 0.5 */
-    padding: 20px; /* 增加一些内边距 */
+    width: 100%;
+    padding: 45px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.title {
+    width: 100%;
+    text-align: center;
+    font-size: larger;
+}
+
+.contentsCanvas {
+    padding: 35px;
     border-radius: 10px; /* 圆角边框 */
+    background-color: rgba(45, 45, 45, 0.85); /* 使用 rgba 表示颜色，并设置透明度为 0.5 */
+    color: #fff;
 }
 
 .textInput {
@@ -69,4 +84,87 @@ input:focus {
     display: flex; 
     justify-content: center; 
     align-items: center;
+}
+
+.header {
+    font-size: small;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 50px;
+    width: 100%;
+    z-index: 1;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(110, 10, 10, 1));
+}
+
+.function {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style: none;
+    height: 100%;
+}
+
+.function button {
+    color: #fff;
+    margin: 0;
+    border: none;
+    padding: 0px 50px;
+    user-select: none;
+    /* 禁止用户选择文本 */
+    background-color: rgba(0, 0, 0, 0.0);
+    transition: all 0.2s;
+    height: 100%;
+}
+
+.function button:hover {
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+}
+
+.userinfo {
+    height: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.userinfo a {
+    height: 100%;
+}
+
+.userinfo li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.userinfo img {
+    margin: 0px;
+    padding: 0px;
+    height: 50px;
+    transition: transform 0.2s;
+}
+
+.userinfo a:hover img {
+    transform: scale(1.2, 1.2) translate(0%, 0%);
+    /* 水平和垂直同时放大并向左下平移 */
+}
+
+.userinfo button {
+    color: #333;
+    margin: 0;
+    border: none;
+    padding: 0px 20px;
+    user-select: none;
+    /* 禁止用户选择文本 */
+    transition: all 0.2s;
+    height: 100%;
+}
+
+.userinfo button:hover {
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
 }

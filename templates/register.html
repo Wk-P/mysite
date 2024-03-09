@@ -24,25 +24,40 @@
 </head>
 
 <body>
+    {% csrf_token %}
+    <nav class="header">
+        <ul class="function">
+            <li><button id="homePageButton">主页</button></li>
+            <li><button id="bangumiPageButton">追番</button></li>
+        </ul>
+        <ul class="userinfo">
+            <li id="username"></li>
+            <li><button id="logoutButton" type="button">退出登录</button></li>
+            <li><button id="registerPageButton" type="button">注册账户</button></li>
+            <li><button id="deletePageButton" type="button">删除账户</button></li>
+            <li id="usericon"><a href="./usercenter"><img src="../static/img/七夕.jpg" alt="user-icon"></a></li>
+        </ul>
+    </nav>
     <div class="contents">
-        {% csrf_token %}
-        <div class="title">用户注册</div>
-        <div class="textInput">
-            <div>用户名</div>
-            <div><label><input type="text" id="username" /></label></div>
-        </div>
-        <div class="textInput">
-            <div>密码</div>
-            <div><label><input type="password" id="password" /></label></div>
-        </div>
-        <div class="textInput">
-            <div>确认密码</div>
-            <div><label><input type="password" id="password1" /></label></div>
-        </div>
-        <div class="buttonContainer">
-            <button id="registerButton">注册</button>
-            <button id="loginButton">登录</button>
-            <button id="cancelButton">取消</button>
+        <div class="contentsCanvas">
+            <div class="title">用户注册</div>
+            <div class="textInput">
+                <div>用户名</div>
+                <div><label><input type="text" id="usernameInput" /></label></div>
+            </div>
+            <div class="textInput">
+                <div>密码</div>
+                <div><label><input type="password" id="passwordInput" /></label></div>
+            </div>
+            <div class="textInput">
+                <div>确认密码</div>
+                <div><label><input type="password" id="passwordInput1" /></label></div>
+            </div>
+            <div class="buttonContainer">
+                <button id="registerButton">注册</button>
+                <button id="loginPageButton">登录</button>
+                <button id="cancelButton">取消</button>
+            </div>
         </div>
     </div>
 </body>

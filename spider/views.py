@@ -14,7 +14,7 @@ class Spider(View):
             return JsonResponse({"response": data})
 
     def get(self, request):
-        if request.session.get("user_id"):
+        if request.COOKIES.get('user_id'):
             return render(request=request, template_name="bangumi.html")
         else:
             return render(request=request, template_name="login.html")

@@ -1,13 +1,18 @@
-/* 设置 body 样式 */
-body {
+/* Reset some default browser styles */
+* {
     margin: 0;
     padding: 0;
-    overflow-y: auto; /* 仅在垂直方向上允许滚动 */
-    background-size: cover; /* 尽可能地覆盖整个页面 */
+}
+
+/* 定义body样式，设置背景图片填充整个屏幕 */
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
     background-position: center;
-    background-attachment: fixed; /* 背景图像固定在视口中 */
-    height: 100vh; /* 设置 body 高度为视口的高度 */
-    transition: background-image 2s ease-in-out; /* 添加背景图像切换的过渡效果 */
+    height: 100vh;
+    margin: 0;
+    position: relative;
+    transition: background-image 2s ease-in-out;
 }
 
 /* 定义番剧列表容器样式 */
@@ -85,4 +90,87 @@ body {
 /* 隐藏滚动条 */
 ::-webkit-scrollbar {
     display: none;
+}
+
+.header {
+    font-size: small;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 50px;
+    width: 100%;
+    z-index: 1;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(110, 10, 10, 1));
+}
+
+.function {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style: none;
+    height: 100%;
+}
+
+.function button {
+    color: #fff;
+    margin: 0;
+    border: none;
+    padding: 0px 50px;
+    user-select: none;
+    /* 禁止用户选择文本 */
+    background-color: rgba(0, 0, 0, 0.0);
+    transition: all 0.2s;
+    height: 100%;
+}
+
+.function button:hover {
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+}
+
+.userinfo {
+    height: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.userinfo a {
+    height: 100%;
+}
+
+.userinfo li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.userinfo img {
+    margin: 0px;
+    padding: 0px;
+    height: 50px;
+    transition: transform 0.2s;
+}
+
+.userinfo a:hover img {
+    transform: scale(1.2, 1.2) translate(0%, 0%);
+    /* 水平和垂直同时放大并向左下平移 */
+}
+
+.userinfo button {
+    color: #333;
+    margin: 0;
+    border: none;
+    padding: 0px 20px;
+    user-select: none;
+    /* 禁止用户选择文本 */
+    transition: all 0.2s;
+    height: 100%;
+}
+
+.userinfo button:hover {
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
 }

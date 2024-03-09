@@ -1,7 +1,7 @@
-function registerButtonClick() {
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    const password1 = document.getElementById('password1').value;
+function deleteButtonClick() {
+    const username = document.getElementById('usernameInput').value;
+    const password = document.getElementById('passwordInput').value;
+    const password1 = document.getElementById('passwordInput1').value;
 
     if (username == null || username == "" || password == null || password == "") {
         alert("用户名或密码不能为空");
@@ -23,14 +23,20 @@ function registerButtonClick() {
             password: password
         })
     })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            if (data['success'] === true) {
+        .then(response => {
+            // 删除成功，根据 HTTP 状态码进行相应的处理
+            const contentType = response.headers.get('content-type');
+            if (contentType && contentType.includes('application/json')) {
+                // 响应为 JSON 格式，解析为 JSON
+                return response.json();
+            } else {
+                // 不是 JSON 格式的响应
                 alert("删除成功");
                 window.location.assign('/');
             }
-            else {
+        })
+        .then(data => {
+            if (typeof data === "object") {
                 if (data['msg'] === 1) { alert("删除失败，用户已不存在"); window.location.assign('/'); }
                 else if (data['msg'] === 3) { alert('删除失败'); window.location.assign('/'); }
                 else { alert("未知错误"); }
@@ -39,29 +45,37 @@ function registerButtonClick() {
         .catch(error => {
             alert("未知错误");
         })
-
 }
 
 function cancelButtonClick() {
-    window.location.href = "/";
+    window.location.assign("/");
 }
-
-let tabId;
 
 window.onload = () => {
-    tabId = pageAdd();
     // 定义背景图片列表
     backgroundImageChange();
-    
-    
-    let deleteButton = document.getElementById('deleteButton');
-    let cancelButton = document.getElementById('cancelButton');
 
-    deleteButton.onclick = registerButtonClick;
+
+    var registerPageButton = document.getElementById('registerPageButton');
+    var logoutButton = document.getElementById('logoutButton');
+    var deletePageButton = document.getElementById(`deletePageButton`);
+    var homePageButton = document.getElementById("homePageButton");
+    var bangumiPageButton = document.getElementById("bangumiPageButton");
+
+    registerPageButton.onclick = registerPageButtonClick;
+    logoutButton.onclick = logoutButtonClick;
+    deletePageButton.onclick = deletePageButtonClick;
+    bangumiPageButton.onclick = bangumiPageButtonClick;
+    homePageButton.onclick = homePageButtonClick;
+
+    var deleteButton = document.getElementById("deleteButton");
+    var cancelButton = document.getElementById("cancelButton");
+    deleteButton.onclick = deleteButtonClick;
     cancelButton.onclick = cancelButtonClick;
+
 }
 
-window.addEventListener('unload', function() {
+window.addEventListener('unload', function () {
     // 从列表中删除界面
     pageDel(tabId);
 

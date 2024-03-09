@@ -4,6 +4,14 @@ from django.views import View
 import json
 from usercenter.models import User
 import hashlib
+from django.http import HttpResponse
+
+
+def create_user_login_cookie(user):
+    response = HttpResponse("Cookies Set")
+    response.set_cookie("user_id", f"{user.id}")
+    return response
+
 
 def string_to_hash(string:str) -> str:
     hash_object = hashlib.sha256()
@@ -19,7 +27,7 @@ def authenticate(username:str, password:str):
         return False
 
     
-def get_body(request) -> dict:
+def get_body(request) -> dict: 
     return json.loads(request.body)
 
 
@@ -67,15 +75,18 @@ class LoginView(View):
             return JsonResponse({"success": False, "msg": 1})
         else:
             if authenticate(username, password):
-                request.session['user_name'] = username
-                return JsonResponse({"success": True, "msg": 0, "data": [username, password]})
+                response = create_user_login_cookie(user[0])
+                return response
             else:
                 return JsonResponse({"success": False, "msg": 2})
             
 
 class DeleteUserView(View):
     def get(self, request):
-        return render(request=request, template_name="delete_user.html")
+        if request.COOKIES.get('user_id'):
+            return render(request=request, template_name="delete_user.html")
+        else:
+            return render(request=request, template_name="login.html")
     
     def post(self, request):
         body = get_body(request)
@@ -89,11 +100,12 @@ class DeleteUserView(View):
             if authenticate(username, password):
                 try:
                     user[0].delete()
-                    if 'user_id' in request.session:
-                        del request.session['user_name']
+                    request.session.flush()
+                    response = HttpResponse("Delete successful")
+                    response.delete_cookie("user_id")
+                    return response
                 except:
                     return JsonResponse({'success': False, "msg": 3})
-                return JsonResponse({"success": True, "msg": 0})
             else:
                 return JsonResponse({"success": False, "msg": 2})
             
@@ -116,7 +128,7 @@ class SearchUserView(View):
 
 class UserCenterView(View):
     def get(self, request):
-        print(request.session.items())
+        print(request.COOKIES.get("user_id"))
         if request.session['user_name']:
             return render(request=request, template_name='usercenter.html')
         else:
@@ -125,11 +137,14 @@ class UserCenterView(View):
     def post(self, request):
         body = get_body(request=request)
         request_class_string = body.get('request_class')
-        print(request_class_string)
         if request_class_string == 'logout':
-            if 'user_id' in request.session:
-                del request.session['user_name']
-            return JsonResponse({"success": True, "msg": 0})
+            # 清理session
+            request.session.flush()
+
+            # 清理cookies
+            response = HttpResponse("Logout successful")
+            response.delete_cookie("user_id")
+            return response
         else:
             # 未完待续的其他功能
             return JsonResponse({"success": False, "msg": 1})

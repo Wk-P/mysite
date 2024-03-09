@@ -23,9 +23,21 @@
     <link id="icon" rel="shortcut icon" href="https://fastcdn.mihoyo.com/static-resource-v2/2023/12/26/94c1ab74da48fb7286f0ea5b6a315699_8857161111806566463.png">
 </head>
 <body>
-    <div id="bangumi-list">    
-        {% csrf_token %}
-    </div>
+    {% csrf_token %}
+    <nav class="header">
+        <ul class="function">
+            <li><button id="homePageButton">主页</button></li>
+            <li><button id="bangumiPageButton">追番</button></li>
+        </ul>
+        <ul class="userinfo">
+            <li id="username"></li>
+            <li><button id="logoutButton" type="button">退出登录</button></li>
+            <li><button id="registerPageButton" type="button">注册账户</button></li>
+            <li><button id="deletePageButton" type="button">删除账户</button></li>
+            <li id="usericon"><a href="./usercenter"><img src="../static/img/七夕.jpg" alt="user-icon"></a></li>
+        </ul>
+    </nav>
+    <div id="bangumi-list"></div>
 </body>
 <script src="../static/js/utils.js"></script>
 </html>

@@ -21,9 +21,18 @@
     <script src="../static/js/home.js"></script>
 </head>
 <body>
-    <div class="overlay">
-        <button id="bangumiButton">追番</button>
-        <button id="usercenterButton">用户界面</button>
-    </div>
+    <nav class="header">
+        <ul class="function">
+            <li><button id="homePageButton">主页</button></li>
+            <li><button id="bangumiPageButton">追番</button></li>
+        </ul>
+        <ul class="userinfo">
+            <li id="username"></li>
+            <li><button id="logoutButton" type="button">退出登录</button></li>
+            <li><button id="registerPageButton" type="button">注册账户</button></li>
+            <li><button id="deletePageButton" type="button">删除账户</button></li>
+            <li id="usericon"><a href="./usercenter"><img src="../static/img/七夕.jpg" alt="user-icon"></a></li>
+        </ul>
+    </nav>
 </body>
 </html>

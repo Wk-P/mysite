@@ -1,7 +1,7 @@
 function registerButtonClick() {
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    const password1 = document.getElementById('password1').value;
+    const username = document.getElementById('usernameInput').value;
+    const password = document.getElementById('passwordInput').value;
+    const password1 = document.getElementById('passwordInput1').value;
 
     if (username == null || username == "" || password == null || password == "") {
         alert("用户名或密码不能为空");
@@ -40,10 +40,6 @@ function registerButtonClick() {
         })
 }
 
-function loginButtonClick() {
-    window.location.assign("/login");
-}
-
 function cancelButtonClick() {
     window.location.assign("/");
 }
@@ -51,11 +47,28 @@ function cancelButtonClick() {
 
 window.onload = () => {
     backgroundImageChange();
+    // header nav buttons
+    var registerPageButton = document.getElementById('registerPageButton');
+    var logoutButton = document.getElementById('logoutButton');
+    var deletePageButton = document.getElementById(`deletePageButton`);
+    var homePageButton = document.getElementById("homePageButton");
+    var bangumiPageButton = document.getElementById("bangumiPageButton");
+
+    registerPageButton.onclick = registerPageButtonClick;
+    logoutButton.onclick = logoutButtonClick;
+    deletePageButton.onclick = deletePageButtonClick;
+    homePageButton.onclick = homePageButtonClick;
+    bangumiPageButton.onclick = bangumiPageButtonClick;
+
+
+    // form buttons
     var registerButton = document.getElementById('registerButton');
     var cancelButton = document.getElementById('cancelButton');
-    var loginButton = document.getElementById('loginButton');
+    var loginPageButton = document.getElementById('loginPageButton');
 
     registerButton.onclick = registerButtonClick;
     cancelButton.onclick = cancelButtonClick;
-    loginButton.onclick = loginButtonClick;
+    loginPageButton.onclick = loginPageButtonClick;
+
+
 }

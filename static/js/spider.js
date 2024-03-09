@@ -1,11 +1,23 @@
-
-// 记录页面Id
-let tabId;
+function logoutButtonClick() {
+    logout();
+}
 
 window.onload = () => {
-    tabId = pageAdd();
     // 背景图片生成
     backgroundImageChange();
+
+    var registerPageButton = document.getElementById('registerPageButton');
+    var logoutButton = document.getElementById('logoutButton');
+    var deletePageButton = document.getElementById(`deletePageButton`);
+    var homePageButton = document.getElementById("homePageButton");
+    var bangumiPageButton = document.getElementById("bangumiPageButton");
+
+    registerPageButton.onclick = registerPageButtonClick;
+    logoutButton.onclick = logoutButtonClick;
+    deletePageButton.onclick = deletePageButtonClick;
+    homePageButton.onclick = homePageButtonClick;
+    bangumiPageButton.onclick = bangumiPageButtonClick;
+
     fetch("/bangumi", {
         method: "POST",
         headers: {
@@ -62,15 +74,3 @@ window.onload = () => {
         })
         .catch(error => console.log(error));
 }
-
-window.addEventListener('unload', function() {
-    // 从列表中删除界面
-    pageDel(tabId);
-
-    // 若是最后一个界面，则退出用户登录状态
-    if (pageList.length < 1) {
-        autoLogout();
-        // 必须把pageList设为空
-        localStorage.removeItem('pageList');
-    }
-})
