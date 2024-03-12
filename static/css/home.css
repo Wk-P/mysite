@@ -17,8 +17,10 @@ body {
 
 .overlay {
     display: flex;
-    justify-content: center; /* 水平居中 */
-    align-items: center; /* 垂直居中 */
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    /* 垂直居中 */
     position: absolute;
     top: 0;
     left: 0;
@@ -116,4 +118,43 @@ button:hover {
     background-color: #333;
     color: #fff;
     cursor: pointer;
+}
+
+.clock {
+    padding-right: 30px;
+    font-size: 3ch;
+    color: #fff;
+    white-space: pre;
+    user-select: none;
+}
+
+.BGMAudio {
+    width: 400px;
+    outline: none;
+    background-color: #eee;
+    color: #eee;
+}
+
+.nextButtonTriangle {
+    border-top: 7px solid transparent;
+    border-left: 13px solid #333;
+    border-bottom: 7px solid transparent;
+}
+
+.prevButtonTriangle {
+    border-top: 7px solid transparent;
+    border-right: 13px solid #333;
+    border-bottom: 7px solid transparent;
+}
+
+.audioControls button:hover > .nextButtonTriangle {
+    border-top: 7px solid transparent;
+    border-left: 13px solid #eee;
+    border-bottom: 7px solid transparent;
+} 
+
+.audioControls button:hover > .prevButtonTriangle {
+    border-top: 7px solid transparent;
+    border-right: 13px solid #eee;
+    border-bottom: 7px solid transparent;
 }

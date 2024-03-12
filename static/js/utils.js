@@ -22,9 +22,9 @@ function logout() {
         body: JSON.stringify({
             request_class: "logout",
         })
-    })  
+    })
         .then(response => {
-            
+
             // 登录成功，根据 HTTP 状态码进行相应的处理
             const contentType = response.headers.get('content-type');
             if (contentType && contentType.includes('application/json')) {
@@ -105,4 +105,19 @@ function backgroundImageChange() {
 
     // 初始加载第一张图片
     loadNextImage();
+}
+
+function timeClock() {
+    let li = document.createElement('li');
+    li.id = "clock";
+    li.classList.add("clock");
+    let audio = document.getElementById("BGMAudio");
+    audio.insertAdjacentElement('afterend', li);
+    setInterval(() => {
+        let clockLi = document.getElementById("clock");
+        let date = new Date();
+        date_string = String(date.getFullYear()).padStart(2, '0') + "-" + String(date.getMonth() + 1).padStart(2, '0') + "-" + String(date.getDate()).padStart(2, '0');
+        time_string = String(date.getHours()).padStart(2, '0') + ":" + String(date.getMinutes()).padStart(2, '0') + ":" + String(date.getSeconds()).padStart(2, '0');
+        clockLi.textContent = `${date_string}      ${time_string}`;
+    }, 1000);
 }
