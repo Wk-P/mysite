@@ -111,7 +111,7 @@ function timeClock() {
     let li = document.createElement('li');
     li.id = "clock";
     li.classList.add("clock");
-    let audio = document.getElementById("BGMAudio");
+    let audio = document.getElementById("usericon");
     audio.insertAdjacentElement('afterend', li);
     setInterval(() => {
         let clockLi = document.getElementById("clock");
@@ -464,18 +464,6 @@ function audioPlayerInit(audioIndex, selector) {
     var audio = document.querySelector(selector);
     audioIndex = Math.floor(Math.random() * nameList.length);
     audio.src = `../static/audio/${nameList[audioIndex]}`;
-    document.getElementById("audioPlayer").onclick = function() {
-        audio.play()
-        .then(() => {
-            console.log('Audio playback started successfully');
-        })
-        .catch(error => {
-            console.error('Error starting audio playback:', error);
-        });
-    }
-
-    document.getElementById("audioPlayer").click();
-
     audio.addEventListener('ended', function () {
         var _auido = this;
         _auido.src = `../static/audio/${nameList[audioIndex]}`;
