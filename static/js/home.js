@@ -48,7 +48,7 @@ window.onload = () => {
     let nextButtonLi = document.createElement('li');
 
     let audioIndex = 0;
-    
+
     audioIndex = audioPlayerInit(audioIndex, ".BGMAudio");
     prevButtonLi.append(createPrevButton(audioIndex));
     nextButtonLi.append(createNextButton(audioIndex));

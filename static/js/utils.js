@@ -464,6 +464,17 @@ function audioPlayerInit(audioIndex, selector) {
     var audio = document.querySelector(selector);
     audioIndex = Math.floor(Math.random() * nameList.length);
     audio.src = `../static/audio/${nameList[audioIndex]}`;
+    document.getElementById("audioPlayer").onclick = function() {
+        audio.play()
+        .then(() => {
+            console.log('Audio playback started successfully');
+        })
+        .catch(error => {
+            console.error('Error starting audio playback:', error);
+        });
+    }
+
+    document.getElementById("audioPlayer").click();
 
     audio.addEventListener('ended', function () {
         var _auido = this;
