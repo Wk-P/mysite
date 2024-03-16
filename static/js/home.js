@@ -1,35 +1,50 @@
-
-
-function createPrevButton(audioIndex) {
-    let trangle = document.createElement('div');
+function createPrevButton() {
     let prevButton = document.createElement('button');
-    trangle.classList.add("prevButtonTriangle");
-    prevButton.append(trangle);
+    let divInButton = document.createElement('div');
+    divInButton.classList.add("prevTriangle"); 
+    prevButton.append(divInButton);
     prevButton.onclick = function () {
         let audio = document.querySelector("#player");
         audioIndex = (audioIndex - 1) % nameList.length;
-        audio.src = src = `../static/audio/${nameList[audioIndex]}`;
+        audio.src = src = `../static/audio/${nameList[audioIndex]}.mp3`;
+        console.log(audioIndex);
+        audio.play();
     };
     return prevButton;
 }
 
-function createNextButton(audioIndex) {
+function createNextButton() {
     let nextButton = document.createElement('button');
-    let trangle = document.createElement('div');
-    trangle.classList.add("nextButtonTriangle");
-    nextButton.append(trangle);
+    let divInButton = document.createElement('div');
+    divInButton.classList.add("nextTriangle"); 
+    nextButton.append(divInButton);
     nextButton.onclick = function () {
         let audio = document.querySelector("#player");
         audioIndex = (audioIndex + 1) % nameList.length;
-        audio.src = src = `../static/audio/${nameList[audioIndex]}`;
+        audio.src = src = `../static/audio/${nameList[audioIndex]}.mp3`;
+        console.log(audioIndex);
+        audio.play();
     };
     return nextButton;
 }
 
-window.onload = () => {
+function addSoundTitle() {
+    let titleItem = document.createElement('li');
+    titleItem.id = "soundTitle";
+    titleItem.classList.add("soundTitle");
+    return titleItem;
+}
+
+function changeSoundTitle(title) {
+    let titleItem = document.getElementById("soundTitle");
+    titleItem.innerHTML = title;
+}
+
+let audioIndex = 0;
+
+window.onload = function () {
     // 定义背景图片列表
     backgroundImageChange();
-
     var registerPageButton = document.getElementById('registerPageButton');
     var logoutButton = document.getElementById('logoutButton');
     var deletePageButton = document.getElementById(`deletePageButton`);
@@ -44,44 +59,59 @@ window.onload = () => {
 
     timeClock();
 
-    const player = new Plyr('#player', {
-        controls: ['play', 'progress', 'current-time', 'mute', 'volume'],
-        autoplay: true,
-    });
+    let playerInitInfo = audioPlayerInit();
+
+    // 生成player元素（并不添加src)或者添加src
+    var player = document.getElementById('player');
+    if (!player) {
+        player = document.createElement('audio');
+        var playerInnerContainer = document.createElement("li");
+        playerInnerContainer.id = "BGMAudio";
+        playerInnerContainer.append(player);
+        document.querySelector("#playerContainer").appendChild(playerInnerContainer);
+
+        player.id = "player";
+        player = new Plyr('#player', {
+            controls: ['play', 'progress', 'current-time','duration', 'volume', 'timeupdate'],
+            autoplay: true,
+            volume: 0.5,
+        });
+    } else {
+        player.src = playerInitInfo.src;
+        changeSoundTitle(nameList[playerInitInfo.index]);
+    }
 
     let prevButtonLi = document.createElement('li');
     let nextButtonLi = document.createElement('li');
 
-    let audioIndex = 0;
-
-    audioIndex = audioPlayerInit(audioIndex, "#player");
-    prevButtonLi.append(createPrevButton(audioIndex));
-    nextButtonLi.append(createNextButton(audioIndex));
+    prevButtonLi.append(createPrevButton(playerInitInfo.index));
+    
+    
+    nextButtonLi.append(createNextButton(playerInitInfo.index));
 
     prevButtonLi.classList.add("audioControls");
     nextButtonLi.classList.add("audioControls");
     const audioLi = document.querySelector("#BGMAudio");
 
-    audioLi.insertAdjacentElement('afterend', prevButtonLi);
-    audioLi.insertAdjacentElement('beforebegin', nextButtonLi);
 
-    // 获取音频元素
-    const audio = player.media;
+    // 上一曲
+    audioLi.insertAdjacentElement('beforebegin', prevButtonLi);
+    // 歌曲标题
+    audioLi.insertAdjacentElement('beforebegin', addSoundTitle());
+    // 下一曲
+    audioLi.insertAdjacentElement('afterend', nextButtonLi);
 
-    // 监听拖动事件
-    player.on('seeking', event => {
-        // 计算进度条位置
-        const progress = (audio.currentTime / audio.duration) * 100;
-        // 更新 Plyr 进度条
-        player.elements.progress.value = progress;
+
+    // autoNextPlay
+    document.getElementById('player').addEventListener('ended', function () {
+        let title = nameList[(audioIndex + 1) % nameList.length];
+        src = `../static/audio/${nameList[(audioIndex + 1) % nameList.length]}.mp3`;
+        var _auido = this;
+        _auido.src = src;
+        _auido.play();
+        changeSoundTitle(title);
     });
 
-    // 在拖动进度条时更新音频的播放位置
-    player.elements.progress.addEventListener('input', event => {
-        // 计算新的播放位置
-        const seekTime = (event.target.value / 100) * audio.duration;
-        // 更新音频的当前时间
-        audio.currentTime = seekTime;
-    });
-
+    var player = document.getElementById('player');
+    player.src = playerInitInfo.src;
 }

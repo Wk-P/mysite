@@ -147,6 +147,7 @@ button:hover {
 }
 
 .audioControls {
+    transition: all 0.2s;
     height: 100%;
 }
 
@@ -155,41 +156,44 @@ button:hover {
     height: 100%;
     width: 50px;
     background-color: #fff;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    transition: all 0.2s;
+    border: 17px solid transparent;
+    transition: all 0.5s;
 }
 
-.nextButtonTriangle {
-    width: 100%;
-    height: 100%;
-    transition: all 0.2s;
-}
-
-.prevButtonTriangle {
-    width: 100%;
-    height: 100%;
-    transition: all 0.2s;
-}
-
-.audioControls button:hover > .nextButtonTriangle {
-    background-color: #000;
+.audioControls button:hover {
     cursor: pointer;
+    background-color: #222;
 }
 
-.audioControls button:hover > .prevButtonTriangle {
-    background-color: #000;
-    cursor: pointer;
+.audioControls .prevTriangle {
+    border-right: 18px solid #222;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    transition: all 0.2s;
+}
+
+.audioControls .nextTriangle {
+    border-left: 18px solid #222;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    transition: all 0.2s;
+}
+
+.audioControls button:hover > .prevTriangle {
+    border-right: 18px solid #eee;
+}
+
+.audioControls button:hover > .nextTriangle {
+    border-left: 18px solid #eee;
 }
 
 .player {
     width: 100%;
 }
 
-.player{
+.player {
     opacity: 0;
-    transition: all 1s ease-in;
+    transition: all 0.8s ease-in;
 }
 
 .player:hover{
@@ -203,4 +207,10 @@ button:hover {
     list-style: none;
     height: 50px;
     width: 100%;
+}
+
+.soundTitle {
+    color: red;
+    background-color: pink;
+    width: 100px;
 }
