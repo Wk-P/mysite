@@ -210,7 +210,15 @@ button:hover {
 }
 
 .soundTitle {
-    color: red;
-    background-color: pink;
-    width: 100px;
+    color: #eee;
+    background-color: #222;
+    width: auto;
+    white-space: nowrap;
+    display: flex; /* 使用 Flex 布局 */
+    align-items: center; /* 垂直居中 */
+    padding: 10px; /* 内边距，可选 */
+}
+
+.container:hover .content {
+    animation-play-state: paused; /* 当鼠标悬停时暂停动画 */
 }

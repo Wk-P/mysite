@@ -7,7 +7,7 @@ function createPrevButton() {
         let audio = document.querySelector("#player");
         audioIndex = (audioIndex - 1) % nameList.length;
         audio.src = src = `../static/audio/${nameList[audioIndex]}.mp3`;
-        console.log(audioIndex);
+        changeSoundTitle(nameList[audioIndex]);
         audio.play();
     };
     return prevButton;
@@ -22,7 +22,7 @@ function createNextButton() {
         let audio = document.querySelector("#player");
         audioIndex = (audioIndex + 1) % nameList.length;
         audio.src = src = `../static/audio/${nameList[audioIndex]}.mp3`;
-        console.log(audioIndex);
+        changeSoundTitle(nameList[audioIndex]);
         audio.play();
     };
     return nextButton;
@@ -37,7 +37,7 @@ function addSoundTitle() {
 
 function changeSoundTitle(title) {
     let titleItem = document.getElementById("soundTitle");
-    titleItem.innerHTML = title;
+    titleItem.textContent = title;
 }
 
 let audioIndex = 0;
@@ -78,15 +78,12 @@ window.onload = function () {
         });
     } else {
         player.src = playerInitInfo.src;
-        changeSoundTitle(nameList[playerInitInfo.index]);
     }
 
     let prevButtonLi = document.createElement('li');
     let nextButtonLi = document.createElement('li');
 
     prevButtonLi.append(createPrevButton(playerInitInfo.index));
-    
-    
     nextButtonLi.append(createNextButton(playerInitInfo.index));
 
     prevButtonLi.classList.add("audioControls");
@@ -114,4 +111,6 @@ window.onload = function () {
 
     var player = document.getElementById('player');
     player.src = playerInitInfo.src;
+    audioIndex = playerInitInfo.index
+    changeSoundTitle(nameList[audioIndex]);
 }
