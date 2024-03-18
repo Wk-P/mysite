@@ -72,7 +72,7 @@ window.onload = function () {
 
         player.id = "player";
         player = new Plyr('#player', {
-            controls: ['play', 'progress', 'current-time','duration', 'volume', 'timeupdate'],
+            controls: ['play', 'current-time','duration', 'volume', 'timeupdate'],
             autoplay: true,
             volume: 0.5,
         });
